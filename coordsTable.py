@@ -25,7 +25,7 @@ def add_head(msp, block, block2, layer_name, rows, min_x, min_y, width_id, width
 
     msp.add_text("α/α", dxfattribs= {
             "layer": layer_name,
-            "style": "LiberationSerif",
+            "style": "Arial",
             "height": 0.3 }).set_pos((min_x + 0.1, row_height * row_inv + min_y + 0.15), align= "LEFT")
 
 
@@ -40,7 +40,7 @@ def add_head(msp, block, block2, layer_name, rows, min_x, min_y, width_id, width
 
     msp.add_text("x (m)", dxfattribs= {
             "layer": layer_name,
-            "style": "LiberationSerif",
+            "style": "Arial",
             "height": 0.3 }).set_pos((min_x + width_id + 0.1, row_height * row_inv + min_y + 0.15), align= "LEFT")
 
 
@@ -55,7 +55,7 @@ def add_head(msp, block, block2, layer_name, rows, min_x, min_y, width_id, width
 
     msp.add_text("y (m)", dxfattribs= {
             "layer": layer_name,
-            "style": "LiberationSerif",
+            "style": "Arial",
             "height": 0.3 }).set_pos((min_x + width_id + width_x + 0.1, row_height * row_inv + min_y + 0.15), align= "LEFT")
     
 
@@ -70,7 +70,7 @@ def add_head(msp, block, block2, layer_name, rows, min_x, min_y, width_id, width
 
     msp.add_text("H (m)", dxfattribs= {
             "layer": layer_name,
-            "style": "LiberationSerif",
+            "style": "Arial",
             "height": 0.3 }).set_pos((min_x + width_id + width_x + width_y + 0.1, row_height * row_inv + min_y + 0.15), align= "LEFT")
 
 
@@ -90,7 +90,7 @@ def add_row(df, msp, block, block2, layer_name, rows, min_x, min_y, width_id, wi
 
     msp.add_text(df['id'], dxfattribs= {
             "layer": layer_name,
-            "style": "LiberationSerif",
+            "style": "Arial",
             "height": 0.3 }).set_pos((min_x + 0.1, row_height * row_inv + min_y + 0.05), align= "LEFT")
 
 
@@ -105,7 +105,7 @@ def add_row(df, msp, block, block2, layer_name, rows, min_x, min_y, width_id, wi
 
     msp.add_text(df['x'], dxfattribs= {
             "layer": layer_name,
-            "style": "LiberationSerif",
+            "style": "Arial",
             "height": 0.3 }).set_pos((min_x + width_id + 0.1, row_height * row_inv + min_y + 0.05), align= "LEFT")
 
 
@@ -120,7 +120,7 @@ def add_row(df, msp, block, block2, layer_name, rows, min_x, min_y, width_id, wi
 
     msp.add_text(df['y'], dxfattribs= {
             "layer": layer_name,
-            "style": "LiberationSerif",
+            "style": "Arial",
             "height": 0.3 }).set_pos((min_x + width_id + width_x + 0.1, row_height * row_inv + min_y + 0.05), align= "LEFT")
     
 
@@ -135,12 +135,13 @@ def add_row(df, msp, block, block2, layer_name, rows, min_x, min_y, width_id, wi
 
     msp.add_text(df['h'], dxfattribs= {
             "layer": layer_name,
-            "style": "LiberationSerif",
+            "style": "Arial",
             "height": 0.3 }).set_pos((min_x + width_id + width_x + width_y + 0.1, row_height * row_inv + min_y + 0.05), align= "LEFT")
 
 
 def create_table(input_filename):
-    doc = ezdxf.new(dxfversion= "R2010", setup= True)    
+    doc = ezdxf.new(dxfversion= "R2010")    
+    doc.styles.new("Arial", dxfattribs={"font": "arial.ttf"})
     layer_name = "coord_table"
 
     doc.layers.new(layer_name, dxfattribs={"color": 7}) 
@@ -182,7 +183,7 @@ def create_table(input_filename):
 
 def main():
     arg1 = sys.argv[1]
-    
+
     if arg1 == "help" or arg1 == "--h" or arg1 == "-h":
         help()
     else:
